@@ -96,7 +96,7 @@
 								<h3>Run your experiment in space</h3>
 								<p>Any experiment (within the limits of our bioreactor) from any location on Earth with wifi connection. Your commands will automatically be transferred to the ISS and data will be returned to all locations accessing it, all in real time.</p>
 								<ul class="actions">
-									<li><a href="#" class="button alt">Learn More</a></li>
+									<li><a href="https://github.com/xurichard/Lif3/tree/master/Website/images" class="button alt">See our Github</a></li>
 								</ul>
 							</section>
 						</div>
@@ -106,7 +106,7 @@
 								<h3>Access your data in real time</h3>
 								<p>Since all the data gathered is transferred through the cloud, you can access your data from anywhere through this web interface. Additionally, we are implementing firebase so that we can assure simultaneous data access.</p>
 								<ul class="actions">
-									<li><a href="#" class="button alt">Learn More</a></li>
+									<li><a href="https://dashboard.us.enableiot.com/v1/ui/dashboard#/chart" class="button alt">Go to Data</a></li>
 								</ul>
 							</section>
 						</div>
@@ -115,10 +115,40 @@
 			</section>
 
 
-			<h1> THIS IS IT </h1>
-			<script src = "test.js">
-				
+
+			<script type="text/JavaScript">
+			
+			document.write("Hello World!")
+			 
+			var request = require("request");
+			var moment = require("moment");
+			var url = "http://api.jambase.com/events"
+			var api_key = "XXXXXX"
+			var now = moment().format('YYYY-MM-DD')
+			var params = {"zipCode":"98102", "radius":"5","startDate":now, "api_key":api_key };
+			request({
+			    url: url,
+			    json: true,
+			    qs: params
+			}, function (error, response, body) {
+			    if (!error && response.statusCode === 200) {
+			        var entries = body["Events"]
+			        entries.forEach(function(value) {
+			          var artists = value["Artists"];
+			          artists.forEach(function(artist) {
+			            console.log(artist["Name"]);
+			          });
+			          console.log(value["Venue"]["Name"]);
+			          console.log(value["Date"]);
+			          console.log(value["TicketUrl"]);
+			        });
+			    }
+			});
+
+
+
 			</script>
+
 		<!-- Three -->
 			<section id="three" class="wrapper style1">
 				<div class="container">
@@ -126,7 +156,7 @@
 						<div class="8u">
 							<section>
 								<h2>LIF3</h2>
-								<a href="#" class="image fit"><img src="images/space.jpg" alt="" height = "300"/></a>
+								<a href="#" class="image fit"><img src="images/Space.jpg" alt="" height = "300"/></a>
 								<p>Rohan told me that I should make a resistance app</p>
 							</section>
 						</div>
